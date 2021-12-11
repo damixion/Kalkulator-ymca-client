@@ -1,0 +1,58 @@
+<div class="title">Kalkulator tkanki tłuszczowej - metoda YMCA</div>
+<div class="container">
+<form class="example-form" [formGroup] = "dimensionsForm" (ngSubmit) ="calc()">
+  <div class="rows">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Imie: </mat-label>
+    <input matInput placeholder="Imie" formControlName="name" type="text">
+    <mat-error *ngIf="dimensionsForm.get('name')!.hasError('required')">Imie jest wymagane</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('name')!.hasError('minLength')">Nie prawidłowe imie</mat-error>
+  </mat-form-field>
+</div>
+  <div class="rows">
+    <div class="elem">
+  <mat-label>Wybierz płeć: </mat-label>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="sex" >
+    <mat-button-toggle value="K">Kobieta</mat-button-toggle>
+    <mat-button-toggle value="M">Mężczyzna</mat-button-toggle>
+  </mat-button-toggle-group>
+  </div>
+<div class="elem">
+  <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 30px; margin-left: 40px;">
+    <mat-label>Waga: </mat-label>
+    <input matInput placeholder="Waga" type="number" formControlName="weight" >
+    <mat-error *ngIf="dimensionsForm.get('weight')!.hasError('required')">To pole jest wymagane</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('weight')!.hasError('max')">Zbyt duża wartość</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('weight')!.hasError('min')">Zbyt mała wartość</mat-error>
+  </mat-form-field>
+</div>
+</div>
+  <div class="rows">
+  <div class="elem">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Talia: </mat-label>
+    <input matInput placeholder="Obwód talii" type="number" formControlName="waist">
+    <mat-error *ngIf="dimensionsForm.get('waist')!.hasError('required')">To pole jest wymagane</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('waist')!.hasError('max')">Zbyt duża wartość</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('waist')!.hasError('min')">Zbyt mała wartość</mat-error>
+  </mat-form-field>
+  </div>
+  <div class="elem">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Wiek: </mat-label>
+    <input matInput placeholder="Wiek" type="number" formControlName="age">
+    <mat-error *ngIf="dimensionsForm.get('age')!.hasError('required')">To pole jest wymagane</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('age')!.hasError('max')">Zbyt duża wartość</mat-error>
+    <mat-error *ngIf="dimensionsForm.get('age')!.hasError('min')">Zbyt mała wartość</mat-error>
+  </mat-form-field>
+</div>
+</div>
+<div class="elem">
+  <div class="elem__sbm">
+  <button mat-raised-button class="elem__sbm--btn" color="primary" type="submit" [disabled]="!dimensionsForm.valid">Oblicz </button>
+</div>
+  <div  *ngIf="result != 0" class="title">Twój wynik: {{result | resultPercent}}</div>
+  <div *ngIf="result != 0" class="title" [style.color]="getColor(resultWord)">{{resultWord}}</div>
+</div>
+</form>
+</div>

@@ -1,0 +1,42 @@
+.container
+{
+display: flex;
+align-content: center;
+justify-content: center;
+width: 100%;
+}
+
+.rows
+{
+  display: flex;
+align-content: center;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.elem
+{
+display: flex;
+align-content: center;
+justify-content: center;
+flex-direction: column;
+margin: 4px 10px 0px 10px;
+
+&__sbm
+{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  &--btn
+  {
+    width: 20%;
+  }
+}
+}
+
+.title
+{
+  text-align: center;
+  font-size: large;
+  margin: 15px;
+}
